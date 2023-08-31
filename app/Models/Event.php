@@ -9,7 +9,9 @@ class Event extends Model
 {
     use HasFactory;
     
-    // protected $table = 'events';
+    protected $table = 'events';
 
-    protected $fillable = ['title', 'pj', 'konsultan', 'nohp', 'alamat', 'time', 'start_date', 'end_date'];
+    protected $primaryKey = 'id';
+
+    protected $fillable = ['title', 'pj', 'konsultan', 'nohp', 'kontakperson', 'alamat', 'time', 'start_date', 'end_date'];
 }

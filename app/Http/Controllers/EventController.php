@@ -119,6 +119,7 @@ class EventController extends Controller
             'pj' => 'required',
             'konsultan' => 'required',
             'nohp' => 'required',
+            'kontakperson' => 'required',
             'alamat' => 'required',
             'time' => 'required',
             'start_date' => 'required',
@@ -127,7 +128,13 @@ class EventController extends Controller
 
         Event::create($request->all());
 
-        return redirect()->route('events.index')->with('success', 'Event created successfully');
+        return redirect()->route('dashboard.index')->with('success', 'Event created successfully');
+    }
+
+    public function show($id)
+    {
+        $event = Event::findOrFail($id);
+        return view('events.index', compact('event'));
     }
 
     // Function untuk menampilkan form edit event
@@ -145,6 +152,7 @@ class EventController extends Controller
             'pj' => 'required',
             'konsultan' => 'required',
             'nohp' => 'required',
+            'kontakperson' => 'required',
             'alamat' => 'required',
             'time' => 'required',
             'start_date' => 'required',
@@ -154,18 +162,20 @@ class EventController extends Controller
         $event = Event::find($id);
         $event->update($request->all());
 
-        return redirect()->route('events.index')->with('success', 'Event updated successfully');
+        return redirect()->route('dashboard.index')->with('success', 'Event updated successfully');
     }
 
     // Function untuk menghapus event dari database
     public function destroy($id)
     {
-        $event = Event::find($id);
+        $event = Event::findOrFail($id);
         $event->delete();
 
-        return redirect()->route('events.index')->with('success', 'Event deleted successfully');
+        return redirect()->route('dashboard.index')->with('success', 'Event deleted successfully');
     }
     
+
+
 
     
     public function getEvents()
@@ -179,6 +189,7 @@ class EventController extends Controller
                 'pj' => $event->pj,
                 'konsultan' => $event->konsultan,
                 'nohp' => $event->nohp,
+                'kontakperson' => $event->kontakperson,
                 'alamat' => $event->alamat,
                 'time' => $event->time,
                 'start' => $event->start_date,

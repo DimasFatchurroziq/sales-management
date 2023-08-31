@@ -1,5 +1,12 @@
-
-    <div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
         <h2>Edit Event</h2>
         <form action="{{ route('events.update', $event->id) }}" method="POST">
             @csrf
@@ -19,6 +26,10 @@
             <div class="form-group">
                 <label for="nohp">No Hp</label>
                 <input type="bigInteger" name="nohp" class="form-control" value="{{ $event->nohp }}" required>
+            </div>
+            <div class="form-group">
+                <label for="kontakperson">No Hp</label>
+                <input type="bigInteger" name="kontakperson" class="form-control" value="{{ $event->kontakperson }}" required>
             </div>
             <div class="form-group">
                 <label for="alamat">Alamat</label>
@@ -44,4 +55,7 @@
             <button type="submit" class="btn btn-primary">Update Event</button>
         </form>
     </div>
+</body>
+</html>
+  
 

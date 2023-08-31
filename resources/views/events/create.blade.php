@@ -1,4 +1,12 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylecreate.css">
+</head>
+<body>
     <div class="container">
         <h2>Create New Event</h2>
         <form action="{{ route('events.store') }}" method="POST">
@@ -18,6 +26,10 @@
             <div class="form-group">
                 <label for="nohp">No Hp</label>
                 <input type="bigInteger" name="nohp" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="kontakperson">No Hp</label>
+                <input type="bigInteger" name="kontakperson" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="alamat">Alamat</label>
@@ -43,4 +55,6 @@
             <button type="submit" class="btn btn-primary">Create Event</button>
         </form>
     </div>
-
+</body>
+</html>
+    
