@@ -24,19 +24,31 @@
                 <input type="text" name="title" class="form-control" value="{{ $event->title }}" required>
             </div>
             <div class="form-group">
-                <label for="nohp">No Hp</label>
-                <input type="bigInteger" name="nohp" class="form-control" value="{{ $event->nohp }}" required>
+                <label for="cp">Cp</label>
+                <input type="text" name="cp" class="form-control" value="{{ $event->cp }}" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">No Hp</label>
+                <input type="bigInteger" name="phone" class="form-control" value="{{ $event->phone }}" required>
             </div>
             <div class="form-group">
                 <label for="kontakperson">No Hp</label>
                 <input type="bigInteger" name="kontakperson" class="form-control" value="{{ $event->kontakperson }}" required>
             </div>
             <div class="form-group">
-                <label for="alamat">Alamat</label>
-                <textarea name="alamat" class="form-control" value="{{ $event->alamat }}" required></textarea>
+                <label for="address">address</label>
+                <textarea name="address" class="form-control" value="{{ $event->address }}" required></textarea>
             </div>
+
             <div class="form-group">
-                <label for="time">Alamat</label>
+                <label for="time">Time</label>
+                <input type="time" name="time" class="form-control" required> -
+                <label for="time"></label>
+                <input type="time" name="time" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="time">address</label>
                 <select name="time" class="form-control" value="{{ $event->time }}" required>
                     <option value="07.00-09.00">07.00-09.00</option>
                     <option value="09.00-11.00">09.00-11.00</option>
@@ -47,10 +59,6 @@
             <div class="form-group">
                 <label for="start_date">Start Date</label>
                 <input type="date" name="start_date" class="form-control" value="{{ $event->start_date }}" required>
-            </div>
-            <div class="form-group">
-                <label for="end_date">End Date</label>
-                <input type="date" name="end_date" class="form-control" value="{{ $event->end_date }}" required>
             </div>
             <button type="submit" class="btn btn-primary">Update Event</button>
         </form>

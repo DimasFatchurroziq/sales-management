@@ -1,7 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Blank Page</title>
@@ -11,6 +11,13 @@
   <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}">
+
+  <style>
+    .time {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -40,13 +47,14 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
+
     <!-- Main content -->
     <section class="content">
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">
-            <button class="btn btn-sm btn-primary" type="button" onclick="window.location='../events/create'">Tambah</button>
+            <button class="btn btn-sm btn-primary" type="button" onclick="window.location='../dashboard/index'">Dashboard</button>
             <button class="btn btn-sm btn-primary" type="button" onclick="window.location='../events/index'">Calendar</button>
           </h3>
 
@@ -60,59 +68,27 @@
           </div>
         </div>
 
+
         <div class="card-body">
           <div class="container mt-5">
-              <h2>Dashboard Admin</h2>
-              <table class="table table-striped">
-                  <thead>
-                      <tr>
-                          <th>ID</th>
-                          <th>Title</th>
-                          <th>PJ</th>
-                          <th>Konsultan</th>
-                          <th>Cp</th>
-                          <th>No</th>
-                          <!-- <th>Kontak</th> -->
-                          <th>address</th>
-                          <th>time</th>
-                          <th>Start</th>
-                          <th>Aksi</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      @foreach ($events as $event)
-                        <tr>
-                            <td>{{ $event->id }}</td>
-                            <td>{{ $event->title }}</td>
-                          @foreach ($employees as $employee)
-                            <td>{{ $employee->employee_name }}</td>
-                            <td>{{ $employee->employee_name }}</td>
-                            @break
-                          @endforeach
-                          @foreach ($customers as $customer)
-                            <td>{{ $customer->customer_name }}</td>
-                            <td>{{ $customer->phone }}</td>
-                            <td>{{ $customer->address }}</td>
-                            @break
-                          @endforeach
-                          @foreach ($events as $event)
-                            <td>{{ $event->time }}</td>
-                            <td>{{ $event->start_date }}</td>
-                            <td>
-                              <button class="btn btn-sm btn-warning" type="button" onclick="window.location='../events/{{ $event->id }}/edit'">Edit</button>
-                              <form action="{{ route('dashboard.destroy', $event->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger" type="submit">Delete</button>
-                              </form>
-                            </td>                    
-                            @break
-                          @endforeach
-                        </tr>
-                      @endforeach
-                      <!-- Data lainnya -->
-                  </tbody>
-              </table>
+              <h2>Dashboard Admin Employee</h2>
+              <form action="{{ route('employee.store') }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="employee_name">Employee Name</label>
+                <input type="text" name="employee_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="position">Position</label>
+                <input type="text" name="position" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary</label>
+                <input type="number" name="salary" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Event</button>
+            <button type="reset" class="btn btn-primary">Reset</button>
+        </form>
           </div>
         </div>
         <!-- /.card-body -->
@@ -151,4 +127,6 @@
 <script src="{{ asset('AdminLTE/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('AdminLTE/dist/js/demo.js') }}"></script>
-</body></html>
+</body>
+</html>
+

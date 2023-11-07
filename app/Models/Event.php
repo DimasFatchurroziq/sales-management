@@ -8,10 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'time', 'start_date'];
+
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
+    }
     
-    protected $table = 'events';
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 
-    protected $primaryKey = 'id';
-
-    protected $fillable = ['title', 'pj', 'konsultan', 'nohp', 'kontakperson', 'alamat', 'time', 'start_date', 'end_date'];
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
 }

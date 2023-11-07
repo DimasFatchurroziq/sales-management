@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Sign In</title>
     <link rel="stylesheet" href="{{ asset('autentikasi/login.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <div class="wrapper">
         <form action="">
-            <h1>Login</h1>
+            <h1><b>Sign In</b></h1>
             <div class="input-box">
-                <input type="text" placeholder="username" required>
-                <i class="bi bi-person-fill"></i>
+                <input type="email" placeholder="email" required>
+                <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
                 <input type="password" placeholder="password" required>
-                <i class="bi bi-lock-fill"></i>
+                <i class='bx bxs-lock-alt'></i>
             </div>
             <div class="remember-forget">
                 <div class="remember">
@@ -27,9 +28,7 @@
                     <a href="_blank">Forget password</a>
                 </div>
             </div>
-            <div class="button">
-                <button>Login</button>
-            </div>
+            <button type="submit" class="btn">Sign In</button>
             <div class="register">
                 <p>Don't have an account? <span><a href="_blank">Register</a></span></p>
             </div>

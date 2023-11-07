@@ -15,7 +15,7 @@
 $.extend( $.validator.messages, {
 	required: "Medan ini diperlukan.",
 	remote: "Sila betulkan medan ini.",
-	email: "Sila masukkan alamat emel yang betul.",
+	email: "Sila masukkan address emel yang betul.",
 	url: "Sila masukkan URL yang betul.",
 	date: "Sila masukkan tarikh yang betul.",
 	dateISO: "Sila masukkan tarikh(ISO) yang betul.",

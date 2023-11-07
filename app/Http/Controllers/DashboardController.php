@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\Payment;
 
 class DashboardController extends Controller
 {
@@ -13,7 +16,9 @@ class DashboardController extends Controller
     public function index()
     {
         $events=Event::all();
-        return view('dashboard.index', compact('events'));    
+        $customers=Customer::all();
+        $employees=Employee::all();
+        return view('dashboard.index', compact('events','customers','employees'));    
     }
 
     /**
@@ -29,7 +34,42 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'pj' => 'required',
+            'consultant' => 'required',
+            'cp' => 'required',
+            'phone' => 'required',
+            //'kontakperson' => 'required',
+            'address' => 'required',
+            'time' => 'required',
+            'start_date' => 'required',
+        ]);
+
+        $dataEvent = [
+            'title' => $request->input('title'),
+            'time' => $request->input('time'),
+            'start_date' => $request->input('start_date'),
+        ];
+    
+        $dataEmployee = [
+            'employee_name' => $request->input('pj'),
+            'position' => 'Consultant',
+            'employee_name' => $request->input('consultant'),
+            'position' => 'PJ',
+        ];
+
+        $dataCustomer = [
+            'customer_name' => $request->input('cp'),
+            'phone' => $request->input('phone'),
+            'address' => $request->input('address'),
+        ];
+
+        Event::create($dataEvent);
+        Customer::create($dataCustomer);
+        Employee::create($dataEmployee);
+        
+        return redirect()->route('dashboard.index')->with('success', 'Event created successfully');
     }
 
     /**

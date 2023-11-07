@@ -67,49 +67,29 @@
                   <thead>
                       <tr>
                           <th>ID</th>
-                          <th>Title</th>
-                          <th>PJ</th>
-                          <th>Konsultan</th>
-                          <th>Cp</th>
-                          <th>No</th>
-                          <!-- <th>Kontak</th> -->
-                          <th>address</th>
-                          <th>time</th>
-                          <th>Start</th>
+                          <th>Product Name</th>
+                          <th>Stock</th>
+                          <th>Price</th>
                           <th>Aksi</th>
                       </tr>
                   </thead>
                   <tbody>
-                      @foreach ($events as $event)
+                      @foreach ($products as $product)
                         <tr>
-                            <td>{{ $event->id }}</td>
-                            <td>{{ $event->title }}</td>
-                          @foreach ($employees as $employee)
-                            <td>{{ $employee->employee_name }}</td>
-                            <td>{{ $employee->employee_name }}</td>
-                            @break
-                          @endforeach
-                          @foreach ($customers as $customer)
-                            <td>{{ $customer->customer_name }}</td>
-                            <td>{{ $customer->phone }}</td>
-                            <td>{{ $customer->address }}</td>
-                            @break
-                          @endforeach
-                          @foreach ($events as $event)
-                            <td>{{ $event->time }}</td>
-                            <td>{{ $event->start_date }}</td>
+                            <td>{{ $product->id }}</td>
+                            <td>{{ $product->product_name }}</td>
+                            <td>{{ $product->stock }}</td>
+                            <td>{{ $product->price }}</td>
                             <td>
-                              <button class="btn btn-sm btn-warning" type="button" onclick="window.location='../events/{{ $event->id }}/edit'">Edit</button>
-                              <form action="{{ route('dashboard.destroy', $event->id) }}" method="POST">
+                              <button class="btn btn-sm btn-warning" type="button" onclick="window.location='../../product/{{ $product->id }}/edit'">Edit</button>
+                              <form action="{{ route('product.destroy', $product->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-sm btn-danger" type="submit">Delete</button>
                               </form>
                             </td>                    
-                            @break
-                          @endforeach
                         </tr>
-                      @endforeach
+                    @endforeach
                       <!-- Data lainnya -->
                   </tbody>
               </table>

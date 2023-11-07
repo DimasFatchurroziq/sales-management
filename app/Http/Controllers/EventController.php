@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\Payment;
 
 // class EventController extends Controller
 // {
@@ -118,12 +119,12 @@ class EventController extends Controller
             'title' => 'required',
             'pj' => 'required',
             'konsultan' => 'required',
-            'nohp' => 'required',
+            'cp' => 'required',
+            'phone' => 'required',
             'kontakperson' => 'required',
-            'alamat' => 'required',
-            'time' => 'required',
+            'address' => 'required',
+            'timestart' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
         ]);
 
         Event::create($request->all());
@@ -151,12 +152,12 @@ class EventController extends Controller
             'title' => 'required',
             'pj' => 'required',
             'konsultan' => 'required',
-            'nohp' => 'required',
+            'cp' => 'required',
+            'phone' => 'required',
             'kontakperson' => 'required',
-            'alamat' => 'required',
-            'time' => 'required',
+            'address' => 'required',
+            'timestart' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
         ]);
 
         $event = Event::find($id);
@@ -188,12 +189,12 @@ class EventController extends Controller
                 'title' => $event->title,
                 'pj' => $event->pj,
                 'konsultan' => $event->konsultan,
-                'nohp' => $event->nohp,
+                'cp' => $event->cp,
+                'phone' => $event->phone,
                 'kontakperson' => $event->kontakperson,
-                'alamat' => $event->alamat,
-                'time' => $event->time,
+                'address' => $event->address,
+                'timestart' => $event->timestart,
                 'start' => $event->start_date,
-                'end' => $event->end_date,
                 // Tambahkan data lain yang ingin ditampilkan pada event di sini
             ];
         }

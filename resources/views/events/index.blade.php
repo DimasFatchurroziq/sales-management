@@ -33,7 +33,7 @@
 
         .left {
             flex: 3; /* Bagian kiri akan memenuhi 50% tinggi container */
-            background-color: #FF00FF;
+            background-color: #FFF;
             padding: 20px;
         }
 
